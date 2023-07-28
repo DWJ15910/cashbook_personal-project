@@ -1,108 +1,92 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Login - SB Admin</title>
-        <link href="${pageContext.request.contextPath}/css/css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-        <script>
-			$(document).ready(function(){
-				// 로그인 클릭시 실행
-				$('#loginBtn').click(function(){
-					if($('#loginId').val().length == 0) {
-						console.log($('#loginId').val());
-						$('#loginIdMsg').text('아이디를 입력해주세요');
-						return;
-					} else {
-						$('#loginIdMsg').text('');
-					}
-					
-					if($('#loginPw').val().length == 0) {
-						console.log($('#loginPw').val());
-						$('#loginPwMsg').text('비밀번호를 입력해주세요');
-						return;
-					} else {
-						$('#loginPwMsg').text('');
-					}
-					
-					$('#loginForm').submit();
-				});
-				<c:if test="${msg != null}">
-					alert('${msg}')
-				</c:if>
-			});
-		</script>
-    </head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
-										
-										<!--  el코드도 출력은된다
-											<p>msg</p>
-										-->
-                                        <form id="loginForm" method="post" action="${pageContext.request.contextPath}/off/login">
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="loginId" type="text" name="memberId" value="${cookieId}">
-                                                 <label for="inputEmail">id</label>
-												<span id="loginIdMsg" class="msg"></span>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="loginPw" type="password" name="memberPw">
-                                                <label for="inputPassword">Password</label>
-												<span id="loginPwMsg" class="msg"></span>
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" name="idSave" value="y">id저장
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            	<button class="btn btn-primary" id="loginBtn" type="button">로그인</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="${pageContext.request.contextPath}/off/addMember">회원가입</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; cashbook</div>
-                            <div>
-                                <a href="https://ko-kr.facebook.com/">
-                                	<img width="30px;" height="30px;" src="${pageContext.request.contextPath}/icon/face.png">
-                                </a>
-                                &middot;
-                                <a href="https://www.instagram.com/">
-                                	<img width="30px;" height="30px;" src="${pageContext.request.contextPath}/icon/insta.png">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="${pageContext.request.contextPath}/css/js/scripts.js"></script>
-    </body>
-</html>
+<html dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="keywords"
+	content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template" />
+<meta name="description"
+	content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
+<meta name="robots" content="noindex,nofollow" />
+<title>LOGIN</title>
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+<!-- Custom CSS -->
+<link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet" />
+<script src="${pageContext.request.contextPath}/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
 
+<body>
+	<div style="height: 700px;"
+		class="main-wrapper
+    			auth-wrapper
+		        d-flex
+		        no-block
+		        justify-content-center
+		        align-items-center
+		        bg-dark">
+		<div class="auth-box bg-dark border-top border-secondary">
+			<div id="loginform">
+				<div class="text-center pt-3 pb-3">
+					<strong style="font-size: 18pt; color: white;">CashBook</strong>
+				</div>
+				<!-- Form -->
+				<form class="form-horizontal mt-3" id="loginform" action="${pageContext.request.contextPath}/off/login" method="post">
+					<div class="row pb-4">
+						<div class="col-12">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text bg-success text-white h-100" id="basic-addon1">
+										<i class="mdi mdi-account fs-4"></i>
+									</span>
+								</div>
+								<!-- ID 입력 -->
+								<input type="text" id="loginId" name="memberId" value="${cookieId}" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required="" />
+								<span id="loginPwMsg" class="msg"></span>
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text bg-warning text-white h-100"
+										id="basic-addon2"> <i class="mdi mdi-lock fs-4"></i>
+									</span>
+								</div>
+								<!-- 비밀번호 입력 -->
+								<input type="text" name="memberPw" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required="">
+								<span id="loginPwMsg" class="msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row border-top border-secondary">
+						<div class="col-12">
+							<div class="form-group">
+								<!-- 비밀번호 버튼 -->
+								<div class="pt-3">
+									<input class="form-check-input" type="checkbox" name="idSave" value="y"><strong style="color:white;"> ID저장</strong>
+									<button class="btn btn-success float-end text-white" type="submit">로그인</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<br>
+				<div class="d-grid">
+					<a class = "btn btn-secondary" style="text-decoration: none; color:#FFFFFF; "href="${pageContext.request.contextPath}/off/addMember">회원가입</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+	$(document).ready(function(){
+		<c:if test="${msg != null}">
+			alert('${msg}')
+		</c:if>
+	});
+</script>
+</body>
+</html>
