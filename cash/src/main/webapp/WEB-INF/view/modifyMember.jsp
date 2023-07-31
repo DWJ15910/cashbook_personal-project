@@ -1,251 +1,176 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-	<!-- Latest compiled and minified CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Latest compiled JavaScript -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			// 회원정보 수정버튼 클릭시 실행
-			$('#modifyMemberBtn').click(function(){
-				if($('#prePw').val().length == 0) {
-					console.log($('#prePw').val());
-					$('#prePwMsg').text('비밀번호를 입력해주세요');
-					return;
-				} else {
-					$('#prePwMsg').text('');
-				}
-				
-				if($('#modifyPw').val().length == 0) {
-					console.log($('#modifyPw').val());
-					$('#modifyPwMsg').text('변경할 비밀번호를 입력해주세요');
-					return;
-				} else {
-					$('#modifyPwMsg').text('');
-				}
-				
-				if($('#modifyPwCk').val().length == 0) {
-					console.log($('#modifyPwCk').val());
-					$('#modifyPwCkMsg').text('재확인 비밀번호를 입력해주세요');
-					return;
-					// 변경할 비밀번호와 확인비밀번호가 일치하지 않으면 실행
-				} else if($('#modifyPw').val() != $('#modifyPwCk').val()) {
-					$('#modifyPwCkMsg').text('변경비밀번호와 확인비밀번호가 일치하지 않습니다');
-					return;
-				} else {
-					$('#modifyPwCkMsg').text('');
-				}
-				
-				$('#modifyMemberForm').submit();
-			});
-				<c:if test="${msg != null}">
-					alert('${msg}')
-				</c:if>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="keywords"
+	content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template" />
+<meta name="description"
+	content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+<link rel="icon" type="image/png" sizes="16x16"
+	href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/assets/extra-libs/multicheck/multicheck.css" />
+<link
+	href="${pageContext.request.contextPath}/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
+	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		// 회원정보 수정버튼 클릭시 실행
+		$('#modifyMemberBtn').click(function(){
+			if($('#prePw').val().length == 0) {
+				console.log($('#prePw').val());
+				$('#prePwMsg').text('비밀번호를 입력해주세요');
+				return;
+			} else {
+				$('#prePwMsg').text('');
+			}
+			
+			if($('#modifyPw').val().length == 0) {
+				console.log($('#modifyPw').val());
+				$('#modifyPwMsg').text('변경할 비밀번호를 입력해주세요');
+				return;
+			} else {
+				$('#modifyPwMsg').text('');
+			}
+			
+			if($('#modifyPwCk').val().length == 0) {
+				console.log($('#modifyPwCk').val());
+				$('#modifyPwCkMsg').text('재확인 비밀번호를 입력해주세요');
+				return;
+				// 변경할 비밀번호와 확인비밀번호가 일치하지 않으면 실행
+			} else if($('#modifyPw').val() != $('#modifyPwCk').val()) {
+				$('#modifyPwCkMsg').text('변경비밀번호와 확인비밀번호가 일치하지 않습니다');
+				return;
+			} else {
+				$('#modifyPwCkMsg').text('');
+			}
+			
+			$('#modifyMemberForm').submit();
 		});
-	</script>
-	<style>
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    td {
-      padding: 8px;
-    }
-
-    select,
-    input {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      outline: none;
-    }
-
-    #categoryIdMsg,
-    #priceIdMsg,
-    #memoIdMsg {
-      color: red;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-	</style>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="/cash/css/css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href=/cash/on/calendar>회원관리</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                	<span style="color: white;">${loginMember}님 회원수정</span>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">memu</div>
-                            <a class="nav-link" href="/cash/on/cashbook">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                home
-                            </a>
-                            <a class="nav-link collapsed" href="/cash/on/memberOne">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                회원정보
-                            </a>
-                            
-                            <a class="nav-link collapsed" href="/cash/on/calendar">
-                            	<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                           	 	달력으로
-                            </a>
-                            <!--  
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
-                                        </nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
-                            -->
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">내일주말</div>
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                <main>
-                	<br>
-                	<br>
-                	<div class="container">
-					<h3>회원정보수정</h3>
-						<form id="modifyMemberForm" method="post" action="${pageContext.request.contextPath}/on/modifyMember">
-						<table>
-							<tr>
-								<td width="170">기존 비밀번호</td>
-								<td>
-									<input id="prePw" type="text" name="memberPw">
-									<span id="prePwMsg"></span>
-								</td>
-							</tr>
-							<tr>
-								<td>비밀번호 수정</td>
-								<td>
-									<input id="modifyPw" type="text" name="modifyPw">
-									<span id="modifyPwMsg"></span>
-								</td>
-							</tr>
-							<tr>
-								<td>변경비밀번호 재확인</td>
-								<td>
-									<input id="modifyPwCk" type="text" name="modifyPw2">
-									<span id="modifyPwCkMsg"></span>
-								</td>
-							</tr>
-						</table>
-						<button style="text-align: center;" class="btn btn-dark" id="modifyMemberBtn" type="button">수정하기</button>
-						</form>
+			<c:if test="${msg != null}">
+				alert('${msg}')
+			</c:if>
+	});
+</script>
+</head>
+<body>
+	<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5"
+		data-sidebartype="full" data-sidebar-position="absolute"
+		data-header-position="absolute" data-boxed-layout="full">
+		<!-- 상단바 출력 -->
+		<header class="topbar" data-navbarbg="skin5">
+			<nav class="navbar top-navbar navbar-expand-md navbar-dark">
+				<div class="navbar-header" data-logobg="skin5">
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/on/calendar">
+						<b class="logo-icon ps-2">Cashbook</b>
+					</a>
+				</div>
+				<div style="color:#FFFFFF;">
+					<a style="color:#FFFFFF;" href="${pageContext.request.contextPath}/on/logout">로그아웃</a>
+				</div>
+			</nav>
+		</header>
+		<!-- 상단바 출력 종료 -->
+		<!-- 좌측바 출력 -->
+		<aside class="left-sidebar" data-sidebarbg="skin5">
+			<div class="scroll-sidebar">
+				<nav class="sidebar-nav">
+					<ul id="sidebarnav" class="pt-4">
+						<!-- 홈으로 -->
+						<li class="sidebar-item">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link"href="${pageContext.request.contextPath}/on/cashbook" aria-expanded="false">
+								<i class="mdi mdi-receipt"></i>
+								<span class="hide-menu">홈으로</span>
+							</a>
+						</li>
+						<!-- 가계부 -->
+						<li class="sidebar-item">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link"href="${pageContext.request.contextPath}/on/calendar" aria-expanded="false">
+								<i class="mdi mdi-blur-linear"></i>
+								<span class="hide-menu">가계부</span>
+							</a>
+						</li>
+						<!-- 회원정보 이동 -->
+						<li class="sidebar-item">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link"href="${pageContext.request.contextPath}/on/memberOne" aria-expanded="false">
+								<i class="mdi mdi-face"></i>
+								<span class="hide-menu">회원정보</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</aside>
+		<!-- 좌측 사이드바 출력 종료 -->
+		<!-- 메인페이지출력 -->
+		<div class="page-wrapper">
+			<div class="page-breadcrumb">
+				<div class="row">
+					<div class="col-12 d-flex no-block align-items-center">
+						<h4 class="page-title">회원정보</h4>
 					</div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; cashbook</div>
-                            <div>
-                                <a href="https://ko-kr.facebook.com/">
-                                	<img width="30px;" height="30px;" src="${pageContext.request.contextPath}/icon/face.png">
-                                </a>
-                                &middot;
-                                <a href="https://www.instagram.com/">
-                                	<img width="30px;" height="30px;" src="${pageContext.request.contextPath}/icon/insta.png">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/cash/css/js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="/cash/css/assets/demo/chart-area-demo.js"></script>
-        <script src="/cash/css/assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="/cash/css/js/datatables-simple-demo.js"></script>
-    </body>
+				</div>
+			</div>
+			<!-- 테이블 내용 출력 -->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title mb-0">회원 정보 수정</h5>
+							</div>
+							<form id="modifyMemberForm" method="post" action="${pageContext.request.contextPath}/on/modifyMember">
+								<table class="table">
+									<tr>
+										<td>기존 비밀번호</td>
+										<td>
+											<input class="form-control" id="prePw" type="text" name="memberPw">
+											<span id="prePwMsg"></span>
+										</td>
+									</tr>
+									<tr>
+										<td>비밀번호 수정</td>
+										<td>
+											<input class="form-control" id="modifyPw" type="text" name="modifyPw">
+											<span id="modifyPwMsg"></span>
+										</td>
+									</tr>
+									<tr>
+										<td>변경비밀번호 재확인</td>
+										<td>
+											<input class="form-control" id="modifyPwCk" type="text" name="modifyPw2">
+											<span id="modifyPwCkMsg"></span>
+										</td>
+									</tr>
+								</table>
+								<button style="float: right;" class="btn btn-dark" id="modifyMemberBtn" type="button">수정하기</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div><!-- 테이블 출력종료 -->
+		</div>
+	</div>
+	<script src="${pageContext.request.contextPath}/assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script	src="${pageContext.request.contextPath}/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/extra-libs/sparkline/sparkline.js"></script>
+	<script src="${pageContext.request.contextPath}/js/waves.js"></script>
+	<script src="${pageContext.request.contextPath}/js/sidebarmenu.js"></script>
+	<script src="${pageContext.request.contextPath}/js/custom.min.js"></script>
+	<script	src="${pageContext.request.contextPath}/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/extra-libs/DataTables/datatables.min.js"></script>
+	<script>
+		$("#zero_config").DataTable();
+	</script>
+</body>
 </html>

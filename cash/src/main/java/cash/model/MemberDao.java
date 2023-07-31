@@ -128,6 +128,7 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("MemberDao 회원탈퇴 row : "+row);
 		return row;
 	}
 	

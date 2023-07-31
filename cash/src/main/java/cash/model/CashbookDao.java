@@ -101,7 +101,7 @@ public class CashbookDao {
 		
 		
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://3.35.102.67/cash","root","java1234");
 			stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, cashbook.getMemberId());
 			stmt.setString(2, cashbook.getCategory());
@@ -130,14 +130,13 @@ public class CashbookDao {
 		return cashbookNo;
 	}
 	
-	// 3-1) 캐시북 삭제 hashtag cascade설정으로 자동삭제
+	// 3-1) 캐시북 삭제
 	public int deleteCashbook(Connection conn, int cashbookNo) {
 		int row = 0;
 		PreparedStatement stmt = null;
 		String sql ="DELETE FROM cashbook WHERE cashbook_no = ?";
 		
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, cashbookNo);
 			System.out.println(stmt + "deleteCashbook DAO");
