@@ -11,7 +11,6 @@ import cash.service.CounterService;
 
 /**
  * 세션이 생성될 때 실행되는 리스너
- *
  */
 @WebListener
 public class CounterListener implements HttpSessionListener {
@@ -25,7 +24,7 @@ public class CounterListener implements HttpSessionListener {
     	int currentCounter = (int)(application.getAttribute("currentCounter"));
     	
     	application.setAttribute("currentCounter", currentCounter+1);
-    	System.out.println(application.getAttribute("currentCounter") +"카운터리스너 currentCounter값");
+    	System.out.println(application.getAttribute("currentCounter") +"<--카운터리스너 currentCounter값");
     	
     	// 오늘 접속자수 db에도 +1
     	countService = new CounterService();

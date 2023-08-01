@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class CounterDao {
 	// 1) 오늘날짜 첫번째 접속 -> insert
-		public int insertCounter(Connection conn) throws Exception {
+		public int insertCounter(Connection conn) {
 			int row = 0;
 			PreparedStatement stmt = null;
 			String sql ="INSERT INTO counter VALUES(CURDATE(), 1)";
@@ -17,14 +17,10 @@ public class CounterDao {
 				
 			}catch (Exception e) {
 				e.printStackTrace();
-				// 예외를 던져야한다
-				throw new Exception(); // 강제로 예외를 발생
-				
 			}finally {
 				try {
 					stmt.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -32,7 +28,7 @@ public class CounterDao {
 		}
 
 		// 2) 오늘날짜 첫번째가 아니면 -> update
-		public int updateCounter(Connection conn) throws Exception {
+		public int updateCounter(Connection conn){
 			int row = 0;
 			PreparedStatement stmt = null;
 			String sql ="UPDATE counter SET counter_num = counter_num+1 WHERE counter_date = CURDATE() ";
@@ -42,14 +38,10 @@ public class CounterDao {
 				
 			}catch (Exception e) {
 				e.printStackTrace();
-				// 예외를 던져야한다
-				throw new Exception(); // 강제로 예외를 발생
-				
 			}finally {
 				try {
 					stmt.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -57,7 +49,7 @@ public class CounterDao {
 		}
 		
 		// 3) 오늘날짜 카운터
-		public int selectCounterCurdate(Connection conn) throws Exception {
+		public int selectCounterCurdate(Connection conn){
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			int counter = 0;
@@ -70,9 +62,6 @@ public class CounterDao {
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
-				// 예외를 던져야한다
-				throw new Exception(); // 강제로 예외를 발생
-				
 			}finally {
 				try {
 					stmt.close();

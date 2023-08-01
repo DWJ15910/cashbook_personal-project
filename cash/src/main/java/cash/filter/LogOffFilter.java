@@ -18,11 +18,8 @@ import javax.servlet.http.HttpSession;
  */
 @WebFilter("/off/*")
 public class LogOffFilter extends HttpFilter implements Filter {
-       
-
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("로그인 OFF 필터 전");
-		
 		// 부모타입이 자식타입의 메서드를 사용할 수 없으니 다운캐스팅시킨다
 		HttpServletRequest req = (HttpServletRequest)request;
 		// 세션값을 받아오기 위해 세션객체 생성
@@ -36,8 +33,6 @@ public class LogOffFilter extends HttpFilter implements Filter {
 		}
 		
 		chain.doFilter(request, response);
-		System.out.println("로그인 OFF 필터 후");
-		
 	}
 
 }

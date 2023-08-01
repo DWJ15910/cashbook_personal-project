@@ -17,12 +17,9 @@ public class CounterService {
 		conn = null;
 		
 		try {
-			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://3.35.102.67:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			counterDao.insertCounter(conn);
-			
 		}catch(Exception e) {
-			// conn.rollback();
 			e.printStackTrace();
 		} finally {
 			try {
@@ -31,7 +28,6 @@ public class CounterService {
 				e.printStackTrace();
 			}
 		}
-		// conn.commit();
 	}
 	
 	// 2번Dao호출
@@ -40,12 +36,10 @@ public class CounterService {
 		conn = null;
 		
 		try {
-			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://3.35.102.67:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			counterDao.updateCounter(conn);
 			
 		}catch(Exception e) {
-			// conn.rollback();
 			e.printStackTrace();
 		} finally {
 			try {
@@ -54,8 +48,6 @@ public class CounterService {
 				e.printStackTrace();
 			}
 		}
-		// conn.commit();
-		
 	}
 	
 	// 3번Dao호출
@@ -65,8 +57,7 @@ public class CounterService {
 		int counter = 0;
 		
 		try {
-			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://3.35.102.67:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			counter = counterDao.selectCounterCurdate(conn);
 			
 		}catch(Exception e) {
@@ -79,8 +70,6 @@ public class CounterService {
 				e.printStackTrace();
 			}
 		}
-		// conn.commit();
-		
 		return counter;
 	}
 	
@@ -91,8 +80,7 @@ public class CounterService {
 		int totalCounter = 0;
 		
 		try {
-			// conn.getAutoCommit(false);
-			conn = DriverManager.getConnection("jdbc:mariadb://3.35.102.67:3306/cash","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/cash","root","java1234");
 			totalCounter = counterDao.selectCounterAll(conn);
 			
 		}catch(Exception e) {
@@ -104,8 +92,6 @@ public class CounterService {
 				e.printStackTrace();
 			}
 		}
-		// conn.commit();
-		
 		return totalCounter;
 	}
 }

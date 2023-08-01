@@ -20,8 +20,6 @@ import javax.servlet.http.HttpSession;
 public class LoginOnFilter extends HttpFilter implements Filter {
        
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("/on/*전");
-		
 		// 부모타입이 자식타입의 메서드를 사용할 수 없으니 다운캐스팅시킨다
 		HttpServletRequest req = (HttpServletRequest)request;
 		// 세션값을 받아오기 위해 세션객체 생성
@@ -32,13 +30,10 @@ public class LoginOnFilter extends HttpFilter implements Filter {
 			HttpServletResponse rep = (HttpServletResponse)response;
 			rep.sendRedirect(req.getContextPath()+"/off/login");
 			return;
-			
 		}
 		
 		// 로그인 되어 있으면 실행
 		chain.doFilter(request, response);
-		
-		System.out.println("/on/*후");
 	}
 
 }

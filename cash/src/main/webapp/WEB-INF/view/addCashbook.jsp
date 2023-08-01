@@ -1,26 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html>
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="keywords"
-	content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template" />
-<meta name="description"
-	content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
-<meta name="robots" content="noindex,nofollow" />
-<title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
-<link rel="icon" type="image/png" sizes="16x16"
-	href="${pageContext.request.contextPath}/assets/images/favicon.png" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/extra-libs/multicheck/multicheck.css" />
-<link
-	href="${pageContext.request.contextPath}/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
-	rel="stylesheet" />
+<title>가계부 추가하기</title>
+<!-- CSS -->
+<link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/extra-libs/multicheck/multicheck.css" />
+<link href="${pageContext.request.contextPath}/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/css/style.min.css" rel="stylesheet" />
+<!-- JS -->
+<script src="${pageContext.request.contextPath}/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script	src="${pageContext.request.contextPath}/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/extra-libs/sparkline/sparkline.js"></script>
+<script src="${pageContext.request.contextPath}/js/waves.js"></script>
+<script src="${pageContext.request.contextPath}/js/sidebarmenu.js"></script>
+<script src="${pageContext.request.contextPath}/js/custom.min.js"></script>
+<script	src="${pageContext.request.contextPath}/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+<script src="${pageContext.request.contextPath}/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+<script src="${pageContext.request.contextPath}/assets/extra-libs/DataTables/datatables.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+	$("#zero_config").DataTable();
+</script>
 <script>
 	$(document).ready(function(){
 		// 추가하기 클릭시 실행
@@ -62,7 +66,6 @@
 	});
 </script>
 </head>
-
 <body>
 	<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5"
 		data-sidebartype="full" data-sidebar-position="absolute"
@@ -164,19 +167,6 @@
 				</div>
 			</div><!-- 테이블 출력종료 -->
 		</div>
-	</div>
-	<script src="${pageContext.request.contextPath}/assets/libs/jquery/dist/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/extra-libs/sparkline/sparkline.js"></script>
-	<script src="${pageContext.request.contextPath}/js/waves.js"></script>
-	<script src="${pageContext.request.contextPath}/js/sidebarmenu.js"></script>
-	<script src="${pageContext.request.contextPath}/js/custom.min.js"></script>
-	<script	src="${pageContext.request.contextPath}/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script>
-		$("#zero_config").DataTable();
-	</script>
+	</div><!-- 전체 wrap -->
 </body>
 </html>

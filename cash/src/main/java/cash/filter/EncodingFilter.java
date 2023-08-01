@@ -15,15 +15,9 @@ import javax.servlet.http.HttpFilter;
 
 public class EncodingFilter extends HttpFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
-		System.out.println("인코딩 전");
-		
+		// utf-8 인코딩
 		request.setCharacterEncoding("UTF-8");
-		
+		// 다음 필터로 넘어가기 (넘어갈 필터가 없으면 거기서 마지막 서블릿으로 요청사항 전달)
 		chain.doFilter(request, response);
-		
-		System.out.println("인코딩 후");
 	}
-
-
 }
