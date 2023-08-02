@@ -175,8 +175,8 @@
 									</div>
 									<div class="card-body b-l calender-sidebar">
 										<div id="calendar">
-											<table class="table table-striped">
-												<tr>
+											<table class="table">
+												<tr style="font-weight: bold;">
 													<th>일</th>
 													<th>월</th>
 													<th>화</th>
@@ -210,7 +210,7 @@
 																	<c:if test="${count < 2}">
 																		<div>
 																			<c:if test="${c.category == '수입' }">
-																				<span>+${c.price}</span>
+																				<span style="color: blue;">+${c.price}</span>
 																			</c:if>
 																			<c:if test="${c.category == '지출' }">
 																				<span style="color: red;">-${c.price}</span>
